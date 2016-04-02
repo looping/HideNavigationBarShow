@@ -25,7 +25,7 @@ class ViewController: UIViewController {
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
-        self.navigationController?.navigationBar.hidden = self.navigationBarNeedHidden
+        self.navigationController?.setNavigationBarHidden(self.navigationBarNeedHidden, animated: true)
     }
 
     override func didReceiveMemoryWarning() {
