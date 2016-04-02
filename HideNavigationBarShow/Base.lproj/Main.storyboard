@@ -1,13 +1,15 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6211" systemVersion="14A298i" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="E6N-Xh-U8g">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6204"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--HideNavigationBarShow-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="BYZ-38-t0r" customClass="ViewController" customModule="HideNavigationBarShow" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -15,11 +17,58 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="W7Z-Zl-r2P">
+                                <rect key="frame" x="20" y="64" width="560" height="268"/>
+                                <state key="normal" title="隐藏导航栏"/>
+                                <connections>
+                                    <action selector="pushAndHiddenNavigationBar:" destination="BYZ-38-t0r" eventType="touchUpInside" id="HrT-Zw-Pz7"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gTU-Ql-NCz">
+                                <rect key="frame" x="20" y="332" width="560" height="268"/>
+                                <state key="normal" title="显示导航栏"/>
+                                <connections>
+                                    <action selector="pushAndShowNavigationBar:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Ncz-Xz-QyF"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="gTU-Ql-NCz" secondAttribute="bottom" id="6U3-0K-Vd0"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="W7Z-Zl-r2P" secondAttribute="trailing" id="JKd-hy-1v2"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="gTU-Ql-NCz" secondAttribute="trailing" id="NHO-v5-39N"/>
+                            <constraint firstItem="W7Z-Zl-r2P" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="Wqi-UC-KDZ"/>
+                            <constraint firstItem="gTU-Ql-NCz" firstAttribute="top" secondItem="W7Z-Zl-r2P" secondAttribute="bottom" id="XXF-0W-nKK"/>
+                            <constraint firstItem="gTU-Ql-NCz" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="cse-Ic-g1Q"/>
+                            <constraint firstItem="W7Z-Zl-r2P" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="dUF-mv-9gd"/>
+                            <constraint firstItem="gTU-Ql-NCz" firstAttribute="width" secondItem="W7Z-Zl-r2P" secondAttribute="width" id="iAn-CR-WgS"/>
+                            <constraint firstItem="gTU-Ql-NCz" firstAttribute="height" secondItem="W7Z-Zl-r2P" secondAttribute="height" id="x6i-54-kFK"/>
+                        </constraints>
                     </view>
+                    <navigationItem key="navigationItem" title="HideNavigationBarShow" id="WAR-oW-ohF"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="1083" y="323"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="4WQ-TO-67q">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="E6N-Xh-U8g" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="L6v-7K-r5k">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="JbD-me-SmO"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="evV-1G-9W9" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="154" y="-369"/>
         </scene>
     </scenes>
 </document>

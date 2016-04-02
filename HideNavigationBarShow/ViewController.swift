@@ -9,7 +9,12 @@
 import UIKit
 
 class ViewController: UIViewController {
-
+    
+    lazy var nextController: UIViewController = {
+        var controller = UIStoryboard(name: "Main", bundle: NSBundle.mainBundle()).instantiateViewControllerWithIdentifier("ViewController")
+        return controller
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -20,6 +25,14 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
-
+    @IBAction func pushAndHiddenNavigationBar(sender: UIButton) {
+        self.navigationController?.pushViewController(nextController, animated: true)
+    }
+    
+    
+    @IBAction func pushAndShowNavigationBar(sender: UIButton) {
+        self.navigationController?.pushViewController(nextController, animated: true)
+    }
+    
 }
 
