@@ -16,17 +16,30 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
     }()
     
     var navigationBarNeedHidden = false
+    var navigationBarHidden = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.navigationController?.interactivePopGestureRecognizer?.delegate = self
+        
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, Int64(1 * NSEC_PER_SEC)), dispatch_get_main_queue()) { 
+            self.navigationBarHidden = self.navigationBarNeedHidden
+            
+            self.navigationController?.setNavigationBarHidden(self.navigationBarHidden, animated: true)
+        }
     }
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
-        self.navigationController?.setNavigationBarHidden(self.navigationBarNeedHidden, animated: true)
+        self.navigationController?.setNavigationBarHidden(self.navigationBarHidden, animated: true)
+    }
+    
+    override func viewWillDisappear(animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        self.navigationController?.setNavigationBarHidden(false, animated: true)
     }
 
     override func didReceiveMemoryWarning() {
