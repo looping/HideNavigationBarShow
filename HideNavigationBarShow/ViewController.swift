@@ -10,14 +10,22 @@ import UIKit
 
 class ViewController: UIViewController {
     
-    lazy var nextController: UIViewController = {
-        var controller = UIStoryboard(name: "Main", bundle: NSBundle.mainBundle()).instantiateViewControllerWithIdentifier("ViewController")
+    lazy var nextController: ViewController = {
+        var controller: ViewController = UIStoryboard(name: "Main", bundle: NSBundle.mainBundle()).instantiateViewControllerWithIdentifier("ViewController") as! ViewController
         return controller
     }()
+    
+    var navigationBarNeedHidden = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        self.navigationController?.navigationBar.hidden = self.navigationBarNeedHidden
     }
 
     override func didReceiveMemoryWarning() {
@@ -26,14 +34,14 @@ class ViewController: UIViewController {
     }
 
     @IBAction func pushAndHiddenNavigationBar(sender: UIButton) {
-        self.navigationController?.navigationBar.hidden = true
+        nextController.navigationBarNeedHidden = true
         
         self.navigationController?.pushViewController(nextController, animated: true)
     }
     
     
     @IBAction func pushAndShowNavigationBar(sender: UIButton) {
-        self.navigationController?.navigationBar.hidden = false
+        nextController.navigationBarNeedHidden = false
         
         self.navigationController?.pushViewController(nextController, animated: true)
     }
