@@ -26,11 +26,15 @@ class ViewController: UIViewController {
     }
 
     @IBAction func pushAndHiddenNavigationBar(sender: UIButton) {
+        self.navigationController?.navigationBar.hidden = true
+        
         self.navigationController?.pushViewController(nextController, animated: true)
     }
     
     
     @IBAction func pushAndShowNavigationBar(sender: UIButton) {
+        self.navigationController?.navigationBar.hidden = false
+        
         self.navigationController?.pushViewController(nextController, animated: true)
     }
     
