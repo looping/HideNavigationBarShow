@@ -39,7 +39,11 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
     override func viewWillDisappear(animated: Bool) {
         super.viewWillDisappear(animated)
         
-        self.navigationController?.setNavigationBarHidden(false, animated: true)
+        if let viewControllers = self.navigationController?.viewControllers {
+            if viewControllers.contains(self) {
+                self.navigationController?.setNavigationBarHidden(false, animated: true)
+            }
+        }
     }
 
     override func didReceiveMemoryWarning() {
